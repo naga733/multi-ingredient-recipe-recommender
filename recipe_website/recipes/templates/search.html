@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Recipes</title>
+    <link rel="stylesheet" href="{% static 'css/search_recipes.css' %}">
+</head>
+<body>
+    <div class="overlay">
+        <header class="navbar">
+            <div class="logo">
+                <h1>NextMeal</h1>
+            </div>
+            <a href="{% url 'home' %}" class="home-btn">Home</a>
+        </header>
+        <div class="container">
+            <div class="form-box">
+                <h1>Search Recipes</h1>
+                <form method="POST" enctype="multipart/form-data" action="">
+                    {% csrf_token %}
+
+                    <!-- Image Upload -->
+                    <input type="file" id="image" name="image" accept="image/*" placeholder="Upload Ingredients Image">
+
+                    <!-- Include Ingredients -->
+                    <input type="text" id="includeIngredients" name="includeIngredients" placeholder="Include Ingredients (e.g., tomato, cheese)">
+
+                    <h2>Complex Search</h2>
+
+                    <!-- Search Query -->
+                    <input type="text" id="query" name="query" placeholder="Search Query (e.g., Pasta)">
+
+                    <!-- Exclude Ingredients -->
+                    <input type="text" id="excludeIngredients" name="excludeIngredients" placeholder="Exclude Ingredients (e.g., egg, peanut)">
+
+                    <!-- Meal Type -->
+                    <select id="type" name="type">
+                        <option value="">Select Meal Type</option>
+                        {% for meal_type in options.meal_types %}
+                            <option value="{{ meal_type }}">{{ meal_type }}</option>
+                        {% endfor %}
+                    </select>
+                    <!-- Submit Button -->
+                    <button type="submit">Search Recipes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

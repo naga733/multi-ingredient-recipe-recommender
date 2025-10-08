@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="overlay">
+        <header class="navbar">
+            <div class="logo">
+                <h1>NextMeal</h1>
+            </div>
+            <a href="{% url 'home' %}" class="home-btn">Home</a>
+        </header>
+        <div class="container" style="margin-bottom:110px;">
+            <div class="form-box">
+                <h1>Login</h1>
+                <form method="POST" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a>.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

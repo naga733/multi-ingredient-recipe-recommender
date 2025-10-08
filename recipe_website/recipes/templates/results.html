@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Results</title>
+    <link rel="stylesheet" href="{% static 'css/search_results.css' %}">
+</head>
+<body>
+<!-- Background and header -->
+<div class="overlay">
+    <header class="navbar">
+        <div class="logo">
+            <h1 class="nextmeal">NextMeal</h1>
+        </div>
+        <div class="buttons">
+            <a href="{% url 'home' %}" class="home-btn">Home</a>
+            <a href="{% url 'search_recipes' %}" class="home-btn">Search</a>
+        </div>
+    </header>
+
+    <!-- Recipe Results -->
+    <main class="recipe-results">
+        {% for recipe in recipes %}
+        <div class="recipe-card">
+            <img src="{{ recipe.image }}" alt="{{ recipe.title }}" class="recipe-image">
+            <div class="recipe-info">
+                <h2>{{ recipe.title }}</h2>
+                {% if recipe.readyInMinutes %}
+                <p><strong>Ready in:</strong> {{ recipe.readyInMinutes }} mins</p>
+                {% endif %}
+                {% if recipe.servings %}
+                <p><strong>Servings:</strong> {{ recipe.servings }}</p>
+                {% endif %}
+                <a href="{% url 'recipe_details' recipe.id %}" class="view-recipe-btn">View Recipe</a>
+            </div>
+        </div>
+        {% endfor %}
+        {% if detected_image_path %}
+        <div class="detected-image-btn-container">
+            <a href="{% url 'detected_image' %}?image_path={{ detected_image_path }}" class="detected-image-btn">View Detected Ingredients</a>
+        </div>
+        {% endif %}
+    </main>
+</div>
+<script src="{% static 'js/results.js' %}"></script>
+</body>
+</html>
