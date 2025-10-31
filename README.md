@@ -1,6 +1,6 @@
 # Personalized Recipe Recommendation System with Multi-Ingredient Detection using YOLO
 
-**NextMeal** is a web application that provides personalized recipe recommendations by seamlessly integrating multi-ingredient detection with intelligent recipe retrieval. The core innovation lies in leveraging **YOLOv11**, a state-of-the-art object detection model, to accurately identify multiple food ingredients from a single image. The detected ingredients are then passed to a dynamic recommendation module, which retrieves tailored recipes from the Spoonacular API while considering user preferences such as cuisine type, dietary restrictions, and intolerances.
+**NextMeal** is a web app that recommends recipes based on what's in your kitchen. It uses YOLOv11, a modern object detection model, to identify multiple ingredients from a single image. Once it knows what foods are in the image, it sends that list to a recommendation system that pulls matching recipes from the Soonacular API. The app also takes into account personal preferences like cuisine type, dietary restrictions, and food intolerances to make the suggestions more relevant.
 
 The system has been implemented as an interactive web application, allowing 
 users to: 
