@@ -72,6 +72,13 @@ It also demonstrates the practical applications of **artificial intelligence in 
 
 ---
 
+## Dataset Challenges and Improving Model performance
+
+Finding a large dataset for detecting multiple food ingredients in a single image was a tough challenge. The biggest problem was the lack of pre-labeled data, and food images are very tricky - they vary widely in lighting, angles, and often have ingredients overlapping or even partially obscured. 
+
+To address this, I applied a few techniques to boost the model's performance. By using label correction, targeted oversampling, mosaic augmentation and fine-tuning. I was able to improve the macro recall from around 60% to 70%. The biggest improvements came with classes that were underrepresented in the dataset, like the carrot, where the model was previously struggling.
+
+---
 ## Future Enhancements
 
 - Expand ingredient classes for wider coverage.
